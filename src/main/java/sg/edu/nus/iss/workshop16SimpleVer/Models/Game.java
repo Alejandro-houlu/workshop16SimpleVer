@@ -3,12 +3,15 @@ package sg.edu.nus.iss.workshop16SimpleVer.Models;
 import java.io.Serializable;
 import java.util.UUID;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;
 
 @RedisHash("Game")
 public class Game implements Serializable {
-    private String id;
+    //private String id;
+    @Id
     private Integer gid;
+
     private String name; 
     private Integer year;
     private Integer ranking;
@@ -22,12 +25,12 @@ public class Game implements Serializable {
     public void setGid(Integer gid) {
         this.gid = gid;
     }
-    public String getId() {
-        return id;
-    }
-    public void setId(String id) {
-        this.id = id;
-    }
+    //public String getId() {
+        //return id;
+    //}
+    //public void setId(String id) {
+    //    this.id = id;
+    //}
     public String getName() {
         return name;
     }
@@ -85,7 +88,7 @@ public class Game implements Serializable {
         this.users_rated = users_rated;
         this.url = url;
         this.image = image;
-        this.id = setUniqueId();
+        //this.id = setUniqueId();
     }
     
 }

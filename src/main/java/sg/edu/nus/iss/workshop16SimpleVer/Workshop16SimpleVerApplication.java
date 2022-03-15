@@ -35,27 +35,23 @@ public class Workshop16SimpleVerApplication {
 	@Bean
 	CommandLineRunner runner (){
 		return args -> {
-			JsonArray allGames = null;
 
 			FileInputStream file = new FileInputStream("src\\main\\resources\\static\\bgg\\game.json");
 
 			JsonArray games = gService.getData(file);
 			
-			//List<Game> gameModels = new ArrayList<>();
-			//for(jakarta.json.JsonValue g : games){
-			//	gameModels.add(gService.convertToModel((JsonObject)g));
+			List<Game> gameModels = new ArrayList<>();
+			for(jakarta.json.JsonValue g : games){
+				gameModels.add(gService.convertToModel((JsonObject)g));
 				
-			//}
+			}
 
-			List<Game> gameModels = games.stream().map(x -> gService.convertToModel((JsonObject)x)).toList();
+			//List<Game> gameModels = games.stream().map(x -> gService.convertToModel((JsonObject)x)).toList();
 			//gameModels.stream().forEach(System.out::println);
+			System.out.println(">>>>>> SIZE >>>>>>" + gameModels.size());
 			gameModels.stream().forEach(x->gRepo.save(x));
-											
-											
 
 			
-
-
 
 
 		};
